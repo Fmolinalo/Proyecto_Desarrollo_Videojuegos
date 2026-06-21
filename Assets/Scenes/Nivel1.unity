@@ -3599,6 +3599,7 @@ MonoBehaviour:
   velocidad: 2
   distanciaDeteccion: 5
   dano: 1
+  vida: 100
 --- !u!50 &1019345789
 Rigidbody2D:
   serializedVersion: 5
@@ -3736,6 +3737,7 @@ MonoBehaviour:
   velocidad: 2
   distanciaDeteccion: 5
   dano: 1
+  vida: 100
 --- !u!95 &1136347945
 Animator:
   serializedVersion: 7
@@ -3847,6 +3849,7 @@ GameObject:
   - component: {fileID: 1427532140}
   - component: {fileID: 1427532145}
   - component: {fileID: 1427532146}
+  - component: {fileID: 1427532147}
   m_Layer: 0
   m_Name: player_0
   m_TagString: Player
@@ -4069,6 +4072,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.75, y: 1.15}
   m_EdgeRadius: 0
+--- !u!114 &1427532147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427532139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f4fd225e6bfbe47b1f4e3dd04da1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JugadorAtaque
+  danio: 25
+  rangoAtaque: 25
 --- !u!1 &1828024529
 GameObject:
   m_ObjectHideFlags: 0

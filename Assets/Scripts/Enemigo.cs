@@ -8,6 +8,7 @@ public class Enemigo : MonoBehaviour
     public float distanciaDeteccion = 5f;
 
     public int dano = 1;
+    public int vida = 100;
 
     private Rigidbody2D rb;
 
@@ -32,7 +33,6 @@ public class Enemigo : MonoBehaviour
                 rb.linearVelocity.y
             );
 
-            // Girar el sprite
             if (direccion.x > 0)
                 transform.localScale = new Vector3(1, 1, 1);
             else
@@ -44,15 +44,29 @@ public class Enemigo : MonoBehaviour
         }
     }
 
+    public void RecibirDanio(int cantidad)
+    {
+        vida -= cantidad;
+
+        Debug.Log(gameObject.name + " recibió " + cantidad + " de daño");
+        Debug.Log("Vida restante: " + vida);
+
+        if (vida <= 0)
+        {
+            Debug.Log("Enemigo eliminado");
+            Destroy(gameObject);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerController jugador = collision.gameObject.GetComponent<PlayerController>();
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-            if (jugador != null)
+            if (player != null)
             {
-                jugador.RecibirDanio(dano);
+                player.RecibirDanio(dano);
             }
         }
     }
