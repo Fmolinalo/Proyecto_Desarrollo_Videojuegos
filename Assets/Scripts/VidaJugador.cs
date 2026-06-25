@@ -2,19 +2,40 @@ using UnityEngine;
 
 public class VidaJugador : MonoBehaviour
 {
-    public int vida = 3;
+    public int vidaMaxima = 3;
+    public int vidaActual;
+
+    public BarraVida barraVida;
+
+    void Start()
+    {
+        vidaActual = vidaMaxima;
+
+        if (barraVida != null)
+        {
+            barraVida.vidaMaxima = vidaMaxima;
+            barraVida.EstablecerVida(vidaActual);
+        }
+    }
 
     public void RecibirDanio(int cantidad)
     {
-        vida -= cantidad;
+        vidaActual -= cantidad;
 
-        Debug.Log("Vida restante: " + vida);
+        if (vidaActual < 0)
+            vidaActual = 0;
 
-        if (vida <= 0)
+        Debug.Log("Vida restante: " + vidaActual);
+
+        if (barraVida != null)
+        {
+            barraVida.EstablecerVida(vidaActual);
+        }
+
+        if (vidaActual <= 0)
         {
             Debug.Log("Game Over");
 
-            // Destruye al jugador o reinicia el nivel
             Destroy(gameObject);
         }
     }
